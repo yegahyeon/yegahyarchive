@@ -1,0 +1,20 @@
+const topSlider = new Swiper(".top-slider", {
+    loop: true,
+    slidesPerView: 11,
+});
+
+const bottomSlider = new Swiper(".bottom-slider", {
+    loop: true,
+
+    autoplay: true,
+    effect: "fade",
+
+    navigation: {
+        nextEl: ".experience-swiper .swiper-button-next",
+        prevEl: ".experience-swiper .swiper-button-prev",
+    },
+
+    thumbs: {
+        swiper: bottomSlider,
+    },
+});

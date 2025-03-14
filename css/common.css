@@ -1,0 +1,57 @@
+@charset 'utf-8';
+
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+@import url("https://fonts.googleapis.com/css2?family=Anton+SC&display=swap");
+
+:root {
+    font-size: 62.5%;
+    --main-color: #ff3b00;
+    --sub-color: #d3af1c;
+    --white20p: rgba(255, 255, 255, 0.2);
+    --white30p: rgba(255, 255, 255, 0.3);
+    --white80p: rgba(255, 255, 255, 0.8);
+    --black20p: rgba(0, 0, 0, 0.2);
+    --black80p: rgba(0, 0, 0, 0.8);
+}
+
+::selection {
+    background: #000;
+    color: #fff;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    text-decoration: none;
+    color: var(--main-color);
+}
+
+hr {
+    position: absolute;
+    margin: -1px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+}
+
+figure img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+body {
+    background: #000;
+    font: 1.6rem/1 "Pretendard", "Anton SC";
+    color: #fff;
+    text-transform: capitalize;
+    word-break: keep-all;
+}
+
+.hidden {
+    display: none !important;
+}
