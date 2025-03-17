@@ -1,16 +1,16 @@
 document.addEventListener("DOMContentLoaded", () => {
     const bottomSlider = new Swiper(".bottom-slider", {
         // Optional parameters
-        // loop: true,
+        loop: true,
         slidesPerView: 11,
         spaceBetween: 20,
     });
 
     const selectionSlider = new Swiper(".selection-slider", {
         // Optional parameters
-        // loop: true,
+        loop: true,
 
-        autoplay: true,
+        // autoplay: true,
         effect: "fade",
         // Navigation arrows
         navigation: {

@@ -1,9 +1,44 @@
 $(document).ready(function () {
+    const $body = $("body");
+    const $progress = $(".progress");
+    const $progressText = $(".progress-text");
+
+    const $mainTitle = $(".main-title");
+    const $b = $(".about-wrap .main-title .hide ");
     const $designer = $(".main-title strong");
     const $aboutContent = $(".about-con");
     const $portfolio = $(".portfoilo");
     const $experience = $(".experience");
     const $designList = $(".design-list");
+
+    const $face = $(".faces");
+
+    // 로딩
+    const imgLoad = imagesLoaded($body);
+    const imgTotal = imgLoad.images.length;
+    let imgLoaded = 0;
+
+    console.log("총 이미지 개수:", imgTotal); // 전체 이미지 개수 확인
+    // 부드러운 갱신을 위한 변수 (전역설정의 필요)
+    let current = 0;
+
+    imgLoad.on("progress", (instance, image) => {
+        imgLoaded++;
+        const progress = Math.floor((imgLoaded / imgTotal) * 100);
+
+        console.log("현재 로드된 이미지:", imgLoaded); // 현재 로드된 이미지 수
+        console.log("진행률:", progress + "%"); // 진행률
+
+        current += (progress - current) * 0.001;
+        console.log(progress, current);
+
+        $progressText.text(progress + "%");
+
+        if (progress === 100) {
+            console.log("로딩 완료!");
+            $progress.fadeOut(1000);
+        }
+    });
 
     // GSAP ScrollTrigger 플러그인 등록
     gsap.registerPlugin(ScrollTrigger);
@@ -13,28 +48,62 @@ $(document).ready(function () {
         $(this).toggleClass("active");
 
         const tl = gsap.timeline({
-            defaults: { duration: 1, ease: "power4.out" },
+            defaults: { duration: 0.5, ease: "power4.out" },
         });
 
         if ($(this).hasClass("active")) {
-            // aboutContent만 나타나는 애니메이션
+            // active 상태일 때: hide 클래스 요소 사라짐
+            tl.to(".main-title .hide", {
+                opacity: 0,
+                y: -50,
+                duration: 0.3,
+            });
+            tl.to($mainTitle, {
+                scale: 0.7,
+                transformOrigin: "50px 100px",
+            });
+            tl.to($designer, {
+                scale: 2.0,
+                transformOrigin: "left bottom",
+                transition: "0.1s",
+            });
+            // aboutContent 나타나는 애니메이션
             tl.to($aboutContent, {
                 display: "block",
                 opacity: 1,
                 x: 0,
-                duration: 1,
+                duration: 0.5,
             });
         } else {
-            // aboutContent 사라지는 애니메이션
+            // active 해제될 때: hide 클래스 요소 나타남
             tl.to($aboutContent, {
                 opacity: 0,
                 x: 100,
-                duration: 1,
+                duration: 0.5,
                 onComplete: function () {
                     gsap.set($aboutContent, {
                         display: "none",
                     });
                 },
+            });
+            tl.to($mainTitle, {
+                scale: 1,
+                transformOrigin: "50px 100px",
+            });
+            tl.to(
+                $designer,
+                {
+                    scale: 1,
+                    transformOrigin: "left bottom",
+                    ease: "bounce.out",
+                    transition: "0.1s",
+                },
+                "<"
+            );
+            tl.to(".main-title .hide", {
+                opacity: 1,
+                y: 0,
+                duration: 0.3,
             });
         }
     });
@@ -63,4 +132,12 @@ $(document).ready(function () {
         opacity: 0,
         x: 100,
     });
+
+    // 초기 상태 설정에 hide 클래스 요소 추가
+    gsap.set(".main-title .hide", {
+        opacity: 1,
+        y: 0,
+    });
+
+    // GSAP로 패럴랙스 효과 구현
 });

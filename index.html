@@ -19,19 +19,26 @@
 
         <script src="./js/jquery-3.7.1.min.js"></script>
 
-        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.mindf.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollToPlugin.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
+        <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
+        <script src="https://unpkg.com/split-type"></script>
 
-        <!-- <script src="./js/script.js"></script> -->
+        <script src="./js/script.js"></script>
         <script src="./js/swiper.js"></script>
     </head>
     <body>
-        <!-- 다크모드 -->
+        <!-- 다크모드 아직 미구현
         <div class="mode-wrap">
             <input type="checkbox" id="mode" />
             <label for="mode">LIGHT</label>
+        </div> -->
+
+        <div class="progress">
+            <div class="progress-bar"></div>
+            <div class="progress-text">0%</div>
         </div>
 
         <main id="main">
@@ -40,7 +47,7 @@
                     <div class="about-wrap">
                         <div class="main-title">
                             <h1>
-                                예<b>, 제가</b><br />가현<b><br />입니다.</b>
+                                예<b class="hide">, 제가</b><br>가현<br><b>입니다.</b>
                             </h1>
                             <strong>designer</strong>
                         </div>
@@ -191,62 +198,121 @@
                                 <div class="swiper-wrapper">
                                     <!-- Slides -->
                                     <div class="swiper-slide">
+
                                         <figure>
                                             <img src="./img/2.jpg" alt="" />
                                         </figure>
                                     </div>
                                     <div class="swiper-slide">
+
                                         <figure>
                                             <img src="./img/3.jpg" alt="" />
                                         </figure>
                                     </div>
                                     <div class="swiper-slide">
+
                                         <figure>
                                             <img src="./img/4.jpg" alt="" />
                                         </figure>
                                     </div>
                                     <div class="swiper-slide">
+
                                         <figure>
                                             <img src="./img/5.jpg" alt="" />
                                         </figure>
                                     </div>
                                     <div class="swiper-slide">
+
                                         <figure>
                                             <img src="./img/6.jpg" alt="" />
                                         </figure>
                                     </div>
                                     <div class="swiper-slide">
+
                                         <figure>
                                             <img src="./img/7.jpg" alt="" />
                                         </figure>
                                     </div>
                                     <div class="swiper-slide">
+
                                         <figure>
                                             <img src="./img/8.jpg" alt="" />
                                         </figure>
                                     </div>
                                     <div class="swiper-slide">
+
                                         <figure>
                                             <img src="./img/9.jpg" alt="" />
                                         </figure>
                                     </div>
                                     <div class="swiper-slide">
+
                                         <figure>
                                             <img src="./img/10.jpg" alt="" />
                                         </figure>
                                     </div>
                                     <div class="swiper-slide">
+
                                         <figure>
                                             <img src="./img/11.jpg" alt="" />
                                         </figure>
                                     </div>
                                     <div class="swiper-slide">
+
                                         <figure>
                                             <img src="./img/12.jpg" alt="" />
                                         </figure>
                                     </div>
                                     ...
                                 </div>
+                            </div>
+
+                            <div class="list-name">
+                                <dl>
+                                    <dt>소생</dt>
+                                    <dd>2022.07</dd>
+                                </dl>
+                                <dl>
+                                    <dt>생애</dt>
+                                    <dd>2022.08</dd>
+                                </dl>
+                                <dl>
+                                    <dt>생애</dt>
+                                    <dd>2022.08</dd>
+                                </dl>
+                                <dl>
+                                    <dt>피워내다</dt>
+                                    <dd>2022.09</dd>
+                                </dl>
+                                <dl>
+                                    <dt>유영</dt>
+                                    <dd>2022.10</dd>
+                                </dl>
+                                <dl>
+                                    <dt>엉겨붙은
+                                        시간들</dt>
+                                    <dd>2022.10</dd>
+                                </dl>
+                                <dl>
+                                    <dt>뿌리내린 것</dt>
+                                    <dd>2022.11</dd>
+                                </dl>
+                                <dl>
+                                    <dt>무제</dt>
+                                    <dd>2022.12</dd>
+                                </dl>
+                                <dl>
+                                    <dt>붓꽃</dt>
+                                    <dd>2023.03</dd>
+                                </dl>
+                                <dl>
+                                    <dt>백합</dt>
+                                    <dd>2023.06</dd>
+                                </dl>
+                                <dl>
+                                    <dt>불꽃</dt>
+                                    <dd>2023.08</dd>
+                                </dl>
                             </div>
                         </div>
                     </div>
@@ -382,5 +448,8 @@
                 </section>
             </div>
         </main>
+
+        <p>i'm still hungry</p>
+        </div>
     </body>
 </html>
