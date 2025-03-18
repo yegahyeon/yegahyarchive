@@ -19,5 +19,18 @@ document.addEventListener("DOMContentLoaded", () => {
         },
 
         thumbs: { swiper: bottomSlider },
+
+        on: {
+            slideChange: function () {
+                console.log(this.realIndex);
+
+                const liName = document.querySelectorAll(".list-name li");
+                liName.forEach((li) => {
+                    li.classList.remove("active");
+                    liName[this.realIndex].classList.add("active");
+                });
+            },
+        },
     });
+    // selectionSlider.slideTo(1);
 });

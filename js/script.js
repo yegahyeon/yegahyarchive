@@ -6,12 +6,20 @@ $(document).ready(function () {
     const $mainTitle = $(".main-title");
     const $b = $(".about-wrap .main-title .hide ");
     const $designer = $(".main-title strong");
+    const $designerH = $(".main-title strong span");
+    const $question = $(".main-title strong b");
     const $aboutContent = $(".about-con");
     const $portfolio = $(".portfoilo");
     const $experience = $(".experience");
     const $designList = $(".design-list");
 
     const $face = $(".faces");
+
+    window.onload = function () {
+        setTimeout(function () {
+            scrollTo(0, 0);
+        }, 100);
+    };
 
     // 로딩
     const imgLoad = imagesLoaded($body);
@@ -43,7 +51,10 @@ $(document).ready(function () {
     // GSAP ScrollTrigger 플러그인 등록
     gsap.registerPlugin(ScrollTrigger);
 
-    // designer 클릭 이벤트 - aboutContent만 처리
+    // 초기에 스크롤 막기
+    $("body").css("overflow", "hidden");
+
+    // designer 클릭 이벤트
     $designer.on("click", function () {
         $(this).toggleClass("active");
 
@@ -52,18 +63,22 @@ $(document).ready(function () {
         });
 
         if ($(this).hasClass("active")) {
-            // active 상태일 때: hide 클래스 요소 사라짐
+            // active 상태일 때
+            // 스크롤 허용
+            $("body").css("overflow", "auto");
+
+            // 기존 애니메이션
             tl.to(".main-title .hide", {
                 opacity: 0,
                 y: -50,
                 duration: 0.3,
             });
             tl.to($mainTitle, {
-                scale: 0.7,
-                transformOrigin: "50px 100px",
+                scale: 0.6,
+                transformOrigin: "0px 100px",
             });
             tl.to($designer, {
-                scale: 2.0,
+                scale: 4.0,
                 transformOrigin: "left bottom",
                 transition: "0.1s",
             });
@@ -75,35 +90,47 @@ $(document).ready(function () {
                 duration: 0.5,
             });
         } else {
-            // active 해제될 때: hide 클래스 요소 나타남
-            tl.to($aboutContent, {
-                opacity: 0,
-                x: 100,
-                duration: 0.5,
+            // active 해제될 때
+            // 스크롤 막기
+            $("body").css("overflow", "hidden");
+
+            // 페이지 최상단으로 부드럽게 스크롤
+            gsap.to(window, {
+                duration: 1,
+                scrollTo: 0,
+                ease: "power2.inOut",
                 onComplete: function () {
-                    gsap.set($aboutContent, {
-                        display: "none",
+                    // 기존 애니메이션
+                    tl.to($aboutContent, {
+                        opacity: 0,
+                        x: 100,
+                        duration: 0.5,
+                        onComplete: function () {
+                            gsap.set($aboutContent, {
+                                display: "none",
+                            });
+                        },
+                    });
+                    tl.to($mainTitle, {
+                        scale: 1,
+                        transformOrigin: "0 100px",
+                    });
+                    tl.to(
+                        $designer,
+                        {
+                            scale: 1,
+                            transformOrigin: "left bottom",
+                            ease: "bounce.out",
+                            transition: "0.1s",
+                        },
+                        "<"
+                    );
+                    tl.to(".main-title .hide", {
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.3,
                     });
                 },
-            });
-            tl.to($mainTitle, {
-                scale: 1,
-                transformOrigin: "50px 100px",
-            });
-            tl.to(
-                $designer,
-                {
-                    scale: 1,
-                    transformOrigin: "left bottom",
-                    ease: "bounce.out",
-                    transition: "0.1s",
-                },
-                "<"
-            );
-            tl.to(".main-title .hide", {
-                opacity: 1,
-                y: 0,
-                duration: 0.3,
             });
         }
     });
@@ -139,5 +166,5 @@ $(document).ready(function () {
         y: 0,
     });
 
-    // GSAP로 패럴랙스 효과 구현
+    // 기존스와이퍼 인덱스값 담기
 });
