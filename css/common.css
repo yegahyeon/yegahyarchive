@@ -12,6 +12,7 @@
     --white80p: rgba(255, 255, 255, 0.8);
     --black20p: rgba(0, 0, 0, 0.2);
     --black80p: rgba(0, 0, 0, 0.8);
+    --e-font: " Anton SC";
 }
 
 ::selection {
@@ -54,4 +55,37 @@ body {
 
 .hidden {
     display: none !important;
+}
+
+.btn-wrap {
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+
+    margin: 3rem;
+    gap: 2rem;
+}
+
+.btn {
+    width: 2.5vw;
+    aspect-ratio: 1/1;
+
+    background: transparent;
+    border: 2px solid #fff;
+    transition: 0.4s 0.2s;
+    opacity: 0.3;
+}
+.btn:hover {
+    transform: scale(1.1);
+
+    opacity: 1;
+}
+
+.btn i {
+    font-size: 2rem;
+    color: #fff;
 }
