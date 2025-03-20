@@ -14,6 +14,9 @@ $(function () {
     const $gallery = $(".pic-list");
     const $galleryPic = $(".pic-con");
 
+    $window.on("load", () => {
+        $galleryPic.classlist.add(".active");
+    });
     // 마우스 이벤트
     $window.on("mousemove", (e) => {
         // 화면 중앙 기준으로 마우스 위치 계산 (-1 ~ 1 범위)

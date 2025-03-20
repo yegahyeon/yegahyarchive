@@ -20,6 +20,10 @@
     color: #fff;
 }
 
+body {
+    overflow-x: hidden;
+}
+
 a {
     text-decoration: none;
     color: inherit;
@@ -63,14 +67,15 @@ body {
     top: 0;
 
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     z-index: 10;
 
     margin: 3rem;
     gap: 2rem;
 }
 
-.btn {
+.btn-home,
+.btn-hambugi {
     width: 2.5vw;
     aspect-ratio: 1/1;
 
@@ -79,13 +84,15 @@ body {
     transition: 0.4s 0.2s;
     opacity: 0.3;
 }
-.btn:hover {
+.btn-home:hover,
+.btn-hambugi:hover {
     transform: scale(1.1);
 
     opacity: 1;
 }
 
-.btn i {
+.btn-home i,
+.btn-hambugi i {
     font-size: 2rem;
     color: #fff;
 }

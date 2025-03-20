@@ -142,9 +142,9 @@ $(document).ready(function () {
         gsap.from(element, {
             scrollTrigger: {
                 trigger: element,
-                start: "top center+=100", // 화면 중앙보다 약간 아래에서 시작
+                start: "top 80%", // 화면 중앙보다 약간 아래에서 시작
                 toggleActions: "play none none reverse",
-                // markers: true, // 개발 시 스크롤 위치 확인용 (나중에 제거)
+                markers: true, // 개발 시 스크롤 위치 확인용 (나중에 제거)
             },
             opacity: 0,
             y: 100,

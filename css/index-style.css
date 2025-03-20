@@ -2,6 +2,85 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Anton+SC&display=swap");
 
+.round1 {
+    width: 23vw;
+    aspect-ratio: 1/1;
+    background: var(--sub-color);
+    border-radius: 50%;
+    filter: blur(10px);
+
+    position: absolute;
+    top: 10%;
+    right: 10%;
+
+    z-index: -1;
+    opacity: 0.5;
+}
+.round2 {
+    width: 14vw;
+    aspect-ratio: 1/1;
+    background: var(--sub-color);
+    border-radius: 50%;
+    filter: blur(10px);
+
+    position: absolute;
+    top: 80%;
+    right: 50%;
+
+    z-index: -1;
+    opacity: 0.5;
+}
+.round3 {
+    width: 7vw;
+    aspect-ratio: 1/1;
+    background: var(--sub-color);
+    border-radius: 50%;
+    filter: blur(10px);
+
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    z-index: -1;
+    opacity: 0.5;
+}
+
+.marquee-bg:nth-of-type(1) {
+    transform: scale(2) rotate(-30deg);
+    background: #fff;
+
+    /* z-index: 999; */
+}
+.marquee-bg:nth-of-type(2) {
+    margin-top: 0.8vh;
+}
+
+.marquee-bg:nth-of-type(1) .marquee {
+    display: flex;
+    animation: marquee 25s linear infinite;
+    animation-direction: reverse;
+}
+.marquee {
+    display: flex;
+    animation: marquee 25s linear infinite;
+}
+
+.marquee-bg:nth-of-type(2) .marquee p {
+    color: #fff;
+}
+
+.marquee p {
+    white-space: nowrap;
+    color: #000;
+    margin: 0 4rem;
+    margin-right: -1px;
+    /* border: 1px solid red; */
+}
+
+@keyframes marquee {
+    100% {
+        transform: translateX(-100%);
+    }
+}
 .main-visual .inner {
     width: 100%;
     margin: 0;
@@ -13,6 +92,7 @@
 
 .me {
     margin-top: -14vh;
+    pointer-events: none;
 }
 
 .me h2 {
@@ -26,7 +106,7 @@
 }
 
 .main .inner {
-    margin: 0 10rem;
+    margin: 25vh 10rem 0;
 
     display: flex;
     flex-direction: column-reverse;
@@ -35,6 +115,7 @@
 .main .gnb ul {
     display: flex;
     flex-direction: column;
+    z-index: 999;
 }
 
 .main .gnb a {
