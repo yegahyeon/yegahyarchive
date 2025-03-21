@@ -1,25 +1,48 @@
-$(function () {
-    const $rd1 = $(".rd-1");
-    const $rd2 = $(".rd-2");
-    const $rd3 = $(".rd-3");
+document.addEventListener("DOMContentLoaded", () => {
+    const lenis = new Lenis();
 
-    let ypos; // 스크롤 위치를 추적하기위한 변수
+    lenis.on("scroll", (e) => {
+        console.log(e);
+    });
 
-    //패럴랙스 효과를 관리하는 함수
-    function parallax() {
-        ypos = $(window).scollTop(); // 현재 window의 스크롤 위치를 가져옯니다
-        // updatePosition(".round-list", ypos, 0.8, "top"); // 배경에 대한 top 위치 업데이트
-        updatePosition($(".rd-3"), ypos, 0.2, "margin-top"); // 빠른 속도로 움직이는 요소 위치 업데이트
-
-        function updatePosition(selector, scrollPos, factor, type) {
-            $(selector).css(type, `${scrollPos * factor}px`); // 계산된 값을 사용하여 CSS 속성값을 부여
-
-            // 스크롤 이벤트가 발생할 때 parallax 함수를 호출
-            $(window).on("scroll", function () {
-                requestAnimationFrame(parallax);
-            });
-
-            parallax();
-        }
+    function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
     }
+
+    requestAnimationFrame(raf);
+
+    window.addEventListener("scroll", function () {
+        let scrollPosition = window.scrollY;
+
+        // 🌟 item2: 특정 중심점을 기준으로 원형 회전 (반시계 방향)
+        let centerX = window.innerWidth / 2.5; // 중심점 X (화면 중앙)
+        let centerY = 100; // 중심점 Y (상단에서 300px 아래)
+        let radius = 400; // 회전 반경
+        let angle = scrollPosition * 0.0005; // 회전 속도 조절
+
+        let x = centerX + Math.cos(angle) * radius; // 원형 궤도의 X 좌표
+        let y = centerY + Math.sin(angle) * radius; // 원형 궤도의 Y 좌표
+
+        // 배경 속도 조정 (느리게)
+
+        // 개별 요소 속도 조정 (더 빠르게)
+        document.querySelector(".rd-1").style.transform = `translate(-${
+            scrollPosition * 0.1
+        }px,${scrollPosition * 0.8}px)`;
+        let item2 = document.querySelector(".rd-1");
+        item2.style.left = `${x}px`;
+        item2.style.top = `${y}px`;
+        item2.style.transform = `translate(-${scrollPosition * 0.1}px,${
+            scrollPosition * 0.8
+        }px)`;
+
+        document.querySelector(".rd-2").style.transform = `translate(${
+            scrollPosition * 0.5
+        }px,${scrollPosition * 1.2}px)`;
+
+        document.querySelector(".rd-3").style.transform = `translate(-${
+            scrollPosition * 0.2
+        }px,${scrollPosition * 1.2}px)`;
+    });
 });

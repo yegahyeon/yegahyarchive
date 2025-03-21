@@ -11,7 +11,7 @@
 
     position: absolute;
     top: 10%;
-    right: 10%;
+    left: 60.83vw;
 
     z-index: -1;
     opacity: 0.5;
@@ -24,7 +24,7 @@
     filter: blur(10px);
 
     position: absolute;
-    top: 80%;
+    top: 50%;
     right: 50%;
 
     z-index: -1;
@@ -39,7 +39,7 @@
 
     position: absolute;
     top: 10%;
-    left: 5%;
+    left: 20%;
     z-index: -1;
     opacity: 0.5;
 }

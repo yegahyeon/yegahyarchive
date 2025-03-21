@@ -15,6 +15,19 @@ $(document).ready(function () {
 
     const $face = $(".faces");
 
+    const lenis = new Lenis();
+
+    lenis.on("scroll", (e) => {
+        console.log(e);
+    });
+
+    function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
     window.onload = function () {
         setTimeout(function () {
             scrollTo(0, 0);
