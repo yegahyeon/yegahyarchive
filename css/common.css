@@ -69,24 +69,48 @@ body {
     display: flex;
     flex-direction: column-reverse;
     z-index: 10;
+    align-items: flex-end;
 
     margin: 3rem;
     gap: 2rem;
 }
 
-.btn-home,
 .btn-hambugi {
-    width: 2.5vw;
-    aspect-ratio: 1/1;
+    width: 100%;
+
+    background: transparent;
+    /* border: 1px solid #fff; */
+
+    display: flex;
+    /* flex-direction: column-reverse; */
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+    align-items: center;
+
+    transition: 0.3s;
+}
+
+/* .btn-hambugi.active {
+    width: 45rem;
+} */
+
+.btn-hambugi i,
+.btn-home {
+    padding: 1rem;
 
     background: transparent;
     border: 2px solid #fff;
-    transition: 0.4s 0.2s;
+    transition: 0.4s;
     opacity: 0.3;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 }
 .btn-home:hover,
-.btn-hambugi:hover {
-    transform: scale(1.1);
+.btn-hambugi i:hover {
+    /* transform: scale(1.1); */
 
     opacity: 1;
 }
@@ -95,4 +119,29 @@ body {
 .btn-hambugi i {
     font-size: 2rem;
     color: #fff;
+    /* z-index: 3;/ */
+}
+
+.menu {
+    /* height: 100%; */
+    width: 0;
+    padding: 1.3rem;
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+    transition: 0.4s;
+    opacity: 0;
+
+    border: 1px solid red;
+    overflow: hidden;
+}
+
+.btn-hambugi.active .menu {
+    width: 40rem;
+    opacity: 1;
+}
+
+.menu li {
+    text-transform: uppercase;
 }

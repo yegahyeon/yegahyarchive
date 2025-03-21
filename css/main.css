@@ -3,7 +3,6 @@
 .progress {
     position: fixed;
     inset: 0;
-    background: tomato;
     z-index: 10;
 }
 

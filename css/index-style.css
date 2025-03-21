@@ -2,7 +2,7 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Anton+SC&display=swap");
 
-.round1 {
+.rd-1 {
     width: 23vw;
     aspect-ratio: 1/1;
     background: var(--sub-color);
@@ -16,7 +16,7 @@
     z-index: -1;
     opacity: 0.5;
 }
-.round2 {
+.rd-2 {
     width: 14vw;
     aspect-ratio: 1/1;
     background: var(--sub-color);
@@ -30,7 +30,7 @@
     z-index: -1;
     opacity: 0.5;
 }
-.round3 {
+.rd-3 {
     width: 7vw;
     aspect-ratio: 1/1;
     background: var(--sub-color);

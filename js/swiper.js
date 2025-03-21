@@ -1,4 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
+    const $btnHam = $(".btn-hambugi");
+    const $btnHamI = $(".btn-hambugi i");
+    const $submenu = $(".menu");
+
+    $btnHam.on("click", () => {
+        $btnHam.toggleClass("active");
+    });
+
     const bottomSlider = new Swiper(".bottom-slider", {
         // Optional parameters
         loop: true,
