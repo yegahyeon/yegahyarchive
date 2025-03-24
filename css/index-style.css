@@ -3,23 +3,25 @@
 @import url("https://fonts.googleapis.com/css2?family=Anton+SC&display=swap");
 
 .intro-bgw {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     background: #fff;
     width: 100vw;
     height: 100vh;
-    /* z-index: -999; */
+    z-index: -1000;
 }
 
 .intro-bgb {
-    position: absolute;
-    top: 0;
-    left: 0;
+    position: fixed;
+    transform-origin: center center;
+    top: 50%;
+    left: 50%;
     background: #000;
-    width: 100vw;
-    height: 100vh;
-    /* z-index: -999; */
+    width: 10rem;
+    height: 10rem;
+    border-radius: 100%;
+    z-index: -999;
 }
 .round {
     z-index: -1;
@@ -86,7 +88,7 @@
 
 .marquee p {
     white-space: nowrap;
-    color: #000;
+    color: var(--main-color);
     margin: 0 4rem;
     margin-right: -1px;
     /* border: 1px solid red; */
@@ -96,6 +98,11 @@
     100% {
         transform: translateX(-100%);
     }
+}
+
+.main-visual {
+    height: 100vh;
+    border: 1px solid #ff0;
 }
 
 .main-visual .inner {

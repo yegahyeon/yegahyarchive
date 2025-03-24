@@ -13,26 +13,56 @@ document.addEventListener("DOMContentLoaded", () => {
 
     requestAnimationFrame(raf);
 
-    // gsap.registerPluein(ScrollTrigger);
-
-    const TL = gsap.timeline();
+    // 페럴렉스 스크롤
 
     // 로드 됐을 때 애니메이션
-    const introBg = document.querySelector(".intro-bg");
+    const introBgw = document.querySelector(".intro-bgw");
+    const introBgb = document.querySelector(".intro-bgb");
     const roundList = document.querySelector(".round-list");
     const textPic = document.querySelector(".main-visual");
 
     const marqueeW = document.querySelector(".marquee:nth-of-type(1)");
     const marqueeB = document.querySelector(".marquee:nth-of-type(2)");
 
-    // 페럴렉스 스크롤
-    window.addEventListener("load", function () {
-        updateParallax(); // 초기에 실행하여 위치 설정
+    gsap.registerPlugin(ScrollTrigger);
+
+    const TL = gsap.timeline();
+
+    TL.set(".intro-bgb", {
+        scale: 0, // 시작할 때 아주 작은 크기
+        xPercent: -50, // 가로 중앙 정렬
+        yPercent: -50, // 세로 중앙 정렬
+        left: "50%", // 뷰포트 중앙
+        top: "50%", // 뷰포트 중앙
+    });
+    TL.set(".portfoilo", { autoAlpha: 0, y: -1000 });
+
+    TL.to(".intro-bgb", {
+        scale: 100, // 최종 크기
+        duration: 10, // 애니메이션 지속 시간
+        ease: "none", // 이징 함수
+        scrollTrigger: {
+            trigger: ".main-visual",
+            start: "top 0%", // 스크롤 시작 위치
+            end: "+=70%",
+            // scrub: 1,
+            markers: true,
+            pin: true,
+            scrub: 3,
+            toggleActions: "play none none reverse",
+        },
     });
 
-    window.addEventListener("scroll", function () {
-        updateParallax(); // 스크롤 시 계속 업데이트
-    });
+    TL.to(
+        ".portfoilo",
+        {
+            autoAlpha: 1,
+            y: 0,
+            duration: 1,
+        },
+        "+=1"
+        //역스크롤 할 때 다시 제자리
+    );
 
     window.addEventListener("scroll", function () {
         let scrollPosition = window.scrollY;
@@ -42,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let centerX = window.innerWidth / 2.5; // 중심점 X (화면 중앙)
         let centerY = 100; // 중심점 Y (상단에서 300px 아래)
         let radius = 400; // 회전 반경
-        let angle = scrollPosition * 0.0005; // 회전 속도 조절
+        let angle = scrollPosition * 0.001; // 회전 속도 조절
 
         let x = centerX + Math.cos(angle) * radius; // 원형 궤도의 X 좌표
         let y = centerY + Math.sin(angle) * radius; // 원형 궤도의 Y 좌표
