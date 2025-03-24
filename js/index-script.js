@@ -13,39 +13,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
     requestAnimationFrame(raf);
 
-    // 페럴렉스 스크롤
-
-    // 로드 됐을 때 애니메이션
-    const introBgw = document.querySelector(".intro-bgw");
-    const introBgb = document.querySelector(".intro-bgb");
-    const roundList = document.querySelector(".round-list");
-    const textPic = document.querySelector(".main-visual");
-
-    const marqueeW = document.querySelector(".marquee:nth-of-type(1)");
-    const marqueeB = document.querySelector(".marquee:nth-of-type(2)");
-
+    //스크롤 트리거거
     gsap.registerPlugin(ScrollTrigger);
 
     const TL = gsap.timeline();
 
     TL.set(".intro-bgb", {
-        scale: 0, // 시작할 때 아주 작은 크기
-        xPercent: -50, // 가로 중앙 정렬
-        yPercent: -50, // 세로 중앙 정렬
-        left: "50%", // 뷰포트 중앙
-        top: "50%", // 뷰포트 중앙
+        scale: 0,
+        xPercent: -50,
+        yPercent: -50,
+        left: "50%",
+        top: "50%",
     });
-    TL.set(".portfoilo", { autoAlpha: 0, y: -1000 });
 
+    // TL.set(".portfoilo", { scale: 0, left: "50%", top: "50%" });
+
+    // intro-bgb 애니메이션
     TL.to(".intro-bgb", {
-        scale: 100, // 최종 크기
-        duration: 10, // 애니메이션 지속 시간
-        ease: "none", // 이징 함수
+        scale: 100,
+        duration: 10,
+        ease: "none",
         scrollTrigger: {
             trigger: ".main-visual",
-            start: "top 0%", // 스크롤 시작 위치
-            end: "+=70%",
-            // scrub: 1,
+            start: "top 0%",
+            end: "+=120%",
             markers: true,
             pin: true,
             scrub: 3,
@@ -53,16 +44,72 @@ document.addEventListener("DOMContentLoaded", () => {
         },
     });
 
-    TL.to(
-        ".portfoilo",
-        {
-            autoAlpha: 1,
-            y: 0,
-            duration: 1,
+    TL.from(".portfoilo", {
+        // duration: 0.5,
+        scale: 0,
+        opacity: 0,
+        duration: 2.5,
+        ease: "expo.inOut",
+        y: -250,
+        scrollTrigger: {
+            trigger: "body",
+            start: "top 0%",
+            end: "+=80%",
+            markers: true,
+            scrub: 0.5,
+            toggleActions: "play none none reverse",
         },
-        "+=1"
-        //역스크롤 할 때 다시 제자리
+    });
+
+    TL.from(
+        ".marquee-bg:nth-of-type(1)",
+        {
+            opacity: 0,
+            duration: 0.3,
+            y: -1500,
+            scrollTrigger: {
+                trigger: "body",
+                start: "top 0%",
+                end: "+=80%",
+                markers: true,
+                scrub: 0.5,
+                toggleActions: "play none none reverse",
+            },
+        },
+        "+=0.3"
     );
+
+    TL.from(
+        ".marquee-bg:nth-of-type(2)",
+        {
+            opacity: 0,
+            duration: 0.5,
+            y: 1000,
+            scrollTrigger: {
+                trigger: "body",
+                start: "top 0%",
+                end: "+=80%",
+                markers: true,
+                scrub: 1,
+                toggleActions: "play none none reverse",
+            },
+        },
+        "+=10"
+    );
+
+    TL.from(".round", {
+        opacity: 0,
+        duration: 0.5,
+
+        scrollTrigger: {
+            trigger: "body",
+            start: "top 0%",
+            end: "+=80%",
+            markers: true,
+            scrub: 1,
+            toggleActions: "play none none reverse",
+        },
+    });
 
     window.addEventListener("scroll", function () {
         let scrollPosition = window.scrollY;

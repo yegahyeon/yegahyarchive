@@ -107,13 +107,12 @@
 
 .main-visual .inner {
     width: 100%;
+    height: 100%;
     margin: 0;
     display: flex;
     justify-content: center;
 
     flex-direction: column; /* 수직 정렬을 위해 추가 */
-
-    z-index: 1;
 }
 
 .me {
