@@ -33,6 +33,7 @@ body {
 }
 
 .pic-list .pic-con {
+    /* width: 30%; */
     position: relative;
     transition: 0.4s;
 }
@@ -41,70 +42,6 @@ body {
     transform: scale(1.1);
     filter: blur(0) grayscale(0);
     z-index: 11;
-}
-
-/* 액티브 상태 */
-/* 1열 */
-.pic-list .pic-con:nth-of-type(1):active {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-}
-.pic-list .pic-con:nth-of-type(2):active {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-}
-
-.pic-list .pic-con:nth-of-type(3):active {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-}
-.pic-list .pic-con:nth-of-type(7):active {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-}
-
-/* 2열 */
-.pic-list .pic-con:nth-of-type(5):active {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-}
-.pic-list .pic-con:nth-of-type(4):active {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-}
-
-.pic-list .pic-con:nth-of-type(6):active {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-}
-
-/* 3열 */
-.pic-list .pic-con:nth-of-type(8):active {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-}
-.pic-list .pic-con:nth-of-type(9):active {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-}
-.pic-list .pic-con:nth-of-type(10):active {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-}
-.pic-list .pic-con:nth-of-type(11):active {
-    position: absolute;
-    top: 50%;
-    left: 50%;
 }
 
 /* 1열 */

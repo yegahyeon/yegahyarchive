@@ -72,7 +72,7 @@ body {
 }
 
 .btn-wrap {
-    position: absolute;
+    position: fixed;
     right: 0;
     top: 0;
 
@@ -143,7 +143,7 @@ body {
     transition: 0.4s;
     opacity: 0;
 
-    border: 1px solid red;
+    /* border: 1px solid red; */
     overflow: hidden;
 }
 
@@ -154,4 +154,6 @@ body {
 
 .menu li {
     text-transform: uppercase;
+    cursor: pointer;
+    user-select: none;
 }

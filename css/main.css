@@ -1,5 +1,9 @@
 @charset 'utf-8';
 
+.body {
+    overflow-x: hidden;
+}
+
 .progress {
     position: fixed;
     inset: 0;
@@ -20,6 +24,7 @@
 .inner {
     width: 172rem;
     margin: 5rem auto 0;
+    position: relative;
 }
 .mode-wrap {
     position: absolute;
@@ -47,7 +52,7 @@
     font-weight: 200;
     text-transform: uppercase;
     top: 46.8rem;
-    left: 25vw;
+    left: 27vw;
     color: #fff;
     cursor: pointer;
     user-select: none;
@@ -66,16 +71,15 @@
         0 0 100px rgba(255, 255, 255, 0.1);
 }
 
-.about-me .portfoilo {
-    display: inline;
-    font-size: 10rem;
-    text-transform: uppercase;
-
+.about-me figure {
+    width: 20vw;
+    aspect-ratio: 3 / 4;
     position: absolute;
-    right: 10rem;
-    top: 90rem;
+    top: 0;
+    right: 0;
 
-    display: none;
+    /* display: none;
+    transition: 0.4s; */
 }
 
 .about-con {
@@ -159,7 +163,8 @@
 }
 
 .experience-con {
-    border: 1px solid tomato;
+    margin-top: 10rem;
+    /* border: 1px solid tomato; */
 }
 
 .experience-con h2 {

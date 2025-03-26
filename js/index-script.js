@@ -1,4 +1,17 @@
 document.addEventListener("DOMContentLoaded", () => {
+    // 햄부기 버튼
+    const $btnHam = $(".btn-hambugi");
+    const $btnHamI = $(".btn-hambugi i");
+    const $submenu = $(".menu");
+
+    const $contact = $("#contact");
+    const $project = $("#project");
+    const $btnUp = $(".btn-home");
+    const $btnCt = $(".menu li:nth-of-type(4)");
+    const $btnPj = $(".menu li:nth-of-type(2)");
+
+    const $designList = $(".design-list");
+
     // 레니쮸
     const lenis = new Lenis();
 
@@ -13,23 +26,47 @@ document.addEventListener("DOMContentLoaded", () => {
 
     requestAnimationFrame(raf);
 
+    $btnHam.on("click", () => {
+        $btnHam.toggleClass("active");
+    });
+
     //스크롤 트리거거
     gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
-    const contact = document.querySelector("#contact");
-    const project = document.querySelector("#project");
-    //scroll to 400 pixels down from the top
-    contact.addEventListener("click", () => {
-        gsap.to(window, { duration: 2, scrollTo: ".contact" });
+    // contact 클릭 이벤트
+    $contact.on("click", function () {
+        gsap.to(window, {
+            duration: 2,
+            scrollTo: ".contact",
+        });
     });
-    project.addEventListener("click", () => {
-        gsap.to(window, { duration: 2, scrollTo: ".design-list" });
+
+    // project 클릭 이벤트
+    $project.on("click", function () {
+        gsap.to(window, {
+            duration: 2,
+            scrollTo: ".design-list",
+        });
+    });
+
+    // 위로 가기 버튼 클릭 이벤트
+    $btnUp.on("click", function () {
+        gsap.to(window, {
+            duration: 1,
+            scrollTo: "body",
+        });
+    });
+    $btnCt.on("click", function () {
+        gsap.to(window, { duration: 1, scrollTo: ".contact" });
+    });
+    $btnPj.on("click", function () {
+        gsap.to(window, { duration: 1, scrollTo: ".design-list" });
     });
 
     const TL = gsap.timeline();
 
     TL.set(".intro-bgb", {
-        scale: 0,
+        scale: 1,
         xPercent: -50,
         yPercent: -50,
         left: "50%",
@@ -38,6 +75,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // TL.set(".portfoilo", { scale: 0, left: "50%", top: "50%" });
 
+    // scroll down 애니메이션
+    TL.from(".scroll-down b", {
+        y: -20,
+        duration: 1,
+        ease: "power1.inOut",
+        yoyo: 1,
+        repeat: -1,
+    });
     // intro-bgb 애니메이션
     TL.to(".intro-bgb", {
         scale: 100,
@@ -47,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
             trigger: ".main-visual",
             start: "top 0%",
             end: "+=120%",
-            markers: true,
+            // markers: true,
             pin: true,
             scrub: 3,
             toggleActions: "play none none reverse",
@@ -63,31 +108,27 @@ document.addEventListener("DOMContentLoaded", () => {
         y: -250,
         scrollTrigger: {
             trigger: "body",
-            start: "top 100",
+            start: "top 150",
             end: "+=80%",
-            markers: true,
+            // markers: true,
             scrub: 0.5,
             toggleActions: "play none none reverse",
         },
     });
 
-    TL.from(
-        ".marquee-bg:nth-of-type(1)",
-        {
-            opacity: 0,
-            duration: 1,
-            y: -1500,
-            scrollTrigger: {
-                trigger: "body",
-                start: "top 200",
-                end: "+=80%",
-                markers: true,
-                scrub: 0.5,
-                toggleActions: "play none none reverse",
-            },
+    TL.from(".marquee-bg:nth-of-type(1)", {
+        opacity: 0,
+        duration: 1,
+        y: -1500,
+        scrollTrigger: {
+            trigger: "body",
+            start: "top 200",
+            end: "+=80%",
+            // markers: true,
+            scrub: 0.5,
+            toggleActions: "play none none reverse",
         },
-        "+=0.3"
-    );
+    });
 
     TL.from(
         ".marquee-bg:nth-of-type(2)",
@@ -99,7 +140,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 trigger: "body",
                 start: "top 300",
                 end: "+=80%",
-                markers: true,
+                // markers: true,
                 scrub: 1,
                 toggleActions: "play none none reverse",
             },
@@ -115,10 +156,88 @@ document.addEventListener("DOMContentLoaded", () => {
             trigger: "body",
             start: "top 0%",
             end: "+=80%",
-            markers: true,
+            // markers: true,
             scrub: 1,
             toggleActions: "play none none reverse",
         },
+    });
+
+    // 초기 상태 설정
+    // btn-wrap 애니메이션 수정
+    gsap.set(".btn-wrap", {
+        opacity: 0,
+        x: 100,
+    });
+
+    ScrollTrigger.create({
+        trigger: ".design-list",
+        start: "top 0%",
+        end: "top top",
+        // markers: true,  // 디버깅용
+        onEnter: () => {
+            gsap.to(".btn-wrap", {
+                opacity: 1,
+                x: 0,
+                duration: 1,
+                ease: "power2.out",
+            });
+        },
+        onLeaveBack: () => {
+            gsap.to(".btn-wrap", {
+                opacity: 0,
+                x: 100,
+                duration: 1,
+                ease: "power2.in",
+            });
+        },
+    });
+
+    // design-list 영역
+
+    // 정의
+    const $webD = $(".design-title h3");
+    const $graphicD = $(".design-title h4");
+
+    const $webDC = $(".web-design");
+    const $graphicDC = $(".graphic-design");
+
+    // 기본화면
+    $webD.addClass("active");
+    $graphicDC.hide();
+
+    // h4을 눌렀을 때 graphic 박스 보이게
+    $graphicD.on("click", function () {
+        $(this).addClass("active");
+        $webD.removeClass("active");
+
+        if ($(this).hasClass("active")) {
+            $webDC.hide();
+            $graphicDC.show();
+            gsap.from($graphicDC, {
+                duration: 0.5,
+                opacity: 0,
+                y: 100,
+                display: "block",
+                ease: "power2.out",
+            });
+        }
+    });
+    $webD.on("click", function () {
+        $(this).addClass("active");
+        $graphicD.removeClass("active");
+
+        if ($(this).hasClass("active")) {
+            $webDC.show();
+            $graphicDC.hide();
+        }
+
+        gsap.from($webDC, {
+            duration: 0.5,
+            opacity: 0,
+            y: 100,
+            display: "block",
+            ease: "power2.out",
+        });
     });
 
     window.addEventListener("scroll", function () {
@@ -266,5 +385,31 @@ document.addEventListener("DOMContentLoaded", () => {
         start: "top center", // 스크롤 시작 지점
         onEnter: () => addBalls(), // 스크롤 트리거가 시작되면 공 추가
         once: true, // 처음 한 번만 실행
+    });
+
+    // 복사 기능 구현
+    const copyElements = document.querySelectorAll(".contact dd");
+
+    copyElements.forEach((element) => {
+        element.style.cursor = "pointer"; // 마우스 커서를 포인터로 변경
+
+        element.addEventListener("click", async () => {
+            const text = element.innerText;
+
+            try {
+                await navigator.clipboard.writeText(text);
+
+                // 복사 성공 시 시각적 피드백
+                const originalText = element.innerText;
+                element.innerText = "Copied!";
+
+                // 1초 후 원래 텍스트로 복귀
+                setTimeout(() => {
+                    element.innerText = originalText;
+                }, 1000);
+            } catch (err) {
+                console.error("Failed to copy text: ", err);
+            }
+        });
     });
 });

@@ -13,6 +13,8 @@ $(document).ready(function () {
     const $experience = $(".experience");
     const $designList = $(".design-list");
 
+    const $picMe = $(".pic-me");
+
     const $face = $(".faces");
 
     const lenis = new Lenis();
@@ -81,11 +83,13 @@ $(document).ready(function () {
             $("body").css("overflow", "auto");
 
             // 기존 애니메이션
+
             tl.to(".main-title .hide", {
                 opacity: 0,
                 y: -50,
                 duration: 0.3,
             });
+
             tl.to($mainTitle, {
                 scale: 0.6,
                 transformOrigin: "0px 100px",
@@ -94,6 +98,12 @@ $(document).ready(function () {
                 scale: 4.0,
                 transformOrigin: "left bottom",
                 transition: "0.1s",
+            });
+            tl.to($picMe, {
+                opacity: 1,
+                x: 0,
+                duration: 1,
+                display: "block",
             });
             // aboutContent 나타나는 애니메이션
             tl.to($aboutContent, {
@@ -114,6 +124,17 @@ $(document).ready(function () {
                 ease: "power2.inOut",
                 onComplete: function () {
                     // 기존 애니메이션
+
+                    tl.to($picMe, {
+                        opacity: 0,
+                        x: 100,
+                        duration: 0.5,
+                        onComplete: function () {
+                            gsap.set($aboutContent, {
+                                display: "none",
+                            });
+                        },
+                    });
                     tl.to($aboutContent, {
                         opacity: 0,
                         x: 100,
@@ -155,19 +176,19 @@ $(document).ready(function () {
         gsap.from(element, {
             scrollTrigger: {
                 trigger: element,
-                start: "top 80%", // 화면 중앙보다 약간 아래에서 시작
+                start: "top 70%", // 화면 중앙보다 약간 아래에서 시작
                 toggleActions: "play none none reverse",
-                markers: true, // 개발 시 스크롤 위치 확인용 (나중에 제거)
+                // markers: true, // 개발 시 스크롤 위치 확인용 (나중에 제거)
             },
             opacity: 0,
             y: 100,
-            duration: 1,
-            delay: index * 0.3, // 각 요소별로 약간의 딜레이
+            duration: 2,
+            // delay: index * 0.3, // 각 요소별로 약간의 딜레이
         });
     });
 
     // 초기 상태 설정
-    gsap.set($aboutContent, {
+    gsap.set([$aboutContent, $picMe], {
         display: "none",
         opacity: 0,
         x: 100,

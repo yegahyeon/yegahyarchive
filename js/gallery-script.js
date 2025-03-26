@@ -21,9 +21,17 @@ $(function () {
     const $gallery = $(".pic-list");
     const $galleryPic = $(".pic-con");
 
-    $window.on("load", () => {
-        $galleryPic.classlist.add(".active");
-    });
+    // 로딩시 이미지 가운데로 이해가 안되서 못 해먹겠음
+    // $window.on("load", function () {
+    //     $gallery.css("display", "block");
+    //     $galleryPic.css({
+    //         position: "absolute", // 모든 카드를 절대 위치로 설정
+    //         top: "50%", // 중앙에 위치
+    //         left: "50%",
+    //         transform: "translate(-50%, -50%)", // 중앙 정렬
+    //     });
+    // });
+
     // 마우스 이벤트
     $window.on("mousemove", (e) => {
         // 화면 중앙 기준으로 마우스 위치 계산 (-1 ~ 1 범위)
