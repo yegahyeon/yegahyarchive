@@ -369,3 +369,79 @@
     width: 100%;
     height: 55vh;
 }
+
+.graphic-design {
+    margin-top: 80vh;
+    position: relative;
+
+    display: flex;
+}
+
+.graphic-design ul {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.graphic-design ul li {
+    width: 25vw;
+
+    display: flex;
+    justify-content: space-between;
+
+    color: var(--white30p);
+    /* border-bottom: 1px solid #fff; */
+    position: relative;
+}
+.graphic-design ul li.active {
+    color: #fff;
+}
+
+.graphic-design ul li::after {
+    content: "";
+    width: 0%;
+    height: 1px;
+    background: #fff;
+
+    position: absolute;
+    bottom: -8px;
+    transition: 0.4s;
+}
+
+.graphic-design ul li.active::after {
+    width: 100%;
+}
+
+.graphic-design ul li strong {
+    font-size: 2rem;
+}
+.graphic-design ul li p {
+    font-size: 1.8rem;
+    font-weight: 100;
+}
+
+.graphic-design span {
+    position: absolute;
+    bottom: 0;
+    right: 31%;
+    text-align: right;
+}
+
+.img-box {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+
+    width: 50rem;
+    aspect-ratio: 3/4;
+    overflow: hidden;
+}
+
+.img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

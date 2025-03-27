@@ -1,14 +1,13 @@
 @charset 'utf-8';
 
-@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
-@import url("https://fonts.googleapis.com/css2?family=Anton+SC&display=swap");
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Anton+SC&display=swap');
 
-@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
 
 @font-face {
-    font-family: "BookkMyungjo-Bd";
-    src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/BookkMyungjo-Bd.woff2")
-        format("woff2");
+    font-family: 'BookkMyungjo-Bd';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/BookkMyungjo-Bd.woff2') format('woff2');
     font-weight: 700;
     font-style: normal;
 }
@@ -22,12 +21,17 @@
     --white80p: rgba(255, 255, 255, 0.8);
     --black20p: rgba(0, 0, 0, 0.2);
     --black80p: rgba(0, 0, 0, 0.8);
-    --e-font: " Anton SC";
+    --e-font: ' Anton SC';
 }
 
 ::selection {
     background: #000;
     color: #fff;
+}
+
+button {
+    cursor: pointer;
+    border: none;
 }
 
 body {
@@ -61,7 +65,7 @@ figure img {
 
 body {
     background: #000;
-    font: 1.6rem/1 "Pretendard", "Anton SC";
+    font: 1.6rem/1 'Pretendard', 'Anton SC';
     color: #fff;
     text-transform: capitalize;
     word-break: keep-all;

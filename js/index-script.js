@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const lenis = new Lenis();
 
     lenis.on("scroll", (e) => {
-        console.log(e);
+        // console.log(e);
     });
 
     function raf(time) {
@@ -412,4 +412,30 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     });
+
+    // graphic design 에 첫번재 li 는 로딩 됐을 때 항시 active~
+    const $graphicLi = $(".graphic-design li");
+    const $imgBox = $(".graphic-design .img-box");
+    const $verMore = $(".graphic-design span:nth-of-type(1)");
+    const $viewMore = $(".graphic-design span:nth-of-type(2)");
+
+    $(".graphic-design li:nth-of-type(1)").addClass("active");
+
+    $graphicLi.on("click", function () {
+        $(".graphic-design ul li").removeClass("active"); // 모든 li에서 active 제거
+        $(this).addClass("active");
+    });
+
+    // 사진 나오게 하기
+    function showImage() {
+        $graphicLi.on("click", function () {
+            // 선택한 li의 index 구하기
+            const imgIndex = $(this).index();
+            console.log(imgIndex);
+
+            //인덱스에 해당하는 이미지 보여주기
+            $imgBox.html(`<img src="./img/sh${imgIndex + 1}.jpg" alt="" />`);
+        });
+    }
+    showImage();
 });

@@ -1,9 +1,5 @@
 @charset 'utf-8';
 
-.body {
-    overflow-x: hidden;
-}
-
 .progress {
     position: fixed;
     inset: 0;
@@ -23,7 +19,9 @@
 
 .inner {
     width: 172rem;
-    margin: 5rem auto 0;
+    width: 89.5833%;
+    margin: 0 auto;
+    padding: 5rem 0;
     position: relative;
 }
 .mode-wrap {
@@ -84,7 +82,8 @@
 
 .about-con {
     position: absolute;
-    top: 58rem;
+    /* top: 58rem; */
+    top: 70vh;
 
     /* about 그리드 젤 상위 */
     display: grid !important;
@@ -160,6 +159,61 @@
     gap: 1rem;
 
     margin-top: 1.5rem;
+}
+.skills ul li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.skills ul li:nth-of-type(1):after {
+    content: "";
+    display: block;
+    width: 12rem;
+    height: 3px;
+    background: #fff;
+}
+.skills ul li:nth-of-type(2)::after {
+    content: "";
+    display: block;
+    width: 14rem;
+    height: 3px;
+    background: #fff;
+}
+.skills ul li:nth-of-type(3)::after {
+    content: "";
+    display: block;
+    width: 15rem;
+    height: 3px;
+    background: #fff;
+}
+.skills ul li:nth-of-type(4)::after {
+    content: "";
+    display: block;
+    width: 15rem;
+    height: 3px;
+    background: #fff;
+}
+.skills ul li:nth-of-type(5)::after {
+    content: "";
+    display: block;
+    width: 10rem;
+    height: 3px;
+    background: #fff;
+}
+.skills ul li:nth-of-type(6)::after {
+    content: "";
+    display: block;
+    width: 10rem;
+    height: 3px;
+    background: #fff;
+}
+.skills ul li:nth-of-type(7)::after {
+    content: "";
+    display: block;
+    width: 20rem;
+    height: 3px;
+    background: #fff;
 }
 
 .experience-con {
