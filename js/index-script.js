@@ -162,6 +162,8 @@ document.addEventListener("DOMContentLoaded", () => {
         },
     });
 
+    // 애니메이션 재실행 안되게
+
     // 초기 상태 설정
     // btn-wrap 애니메이션 수정
     gsap.set(".btn-wrap", {
@@ -193,6 +195,21 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // design-list 영역
+    // 만약 사용자가 main 부분으로 들어왔으면 숨김 처리
+    if (sessionStorage.getItem("enteredMain")) {
+        $(".intro-bgw, .intro-bgb, .scroll-down").hide();
+    }
+
+    // 사용자가 main 부분으로 스크롤을 내렸을 때 저장
+    $(window).on("scroll", function () {
+        let mainOffset = $("main").offset().top;
+        let scrollTop = $(window).scrollTop();
+
+        if (scrollTop >= mainOffset) {
+            sessionStorage.setItem("enteredMain", "true");
+            $(".intro-bgw, .intro-bgb, .scroll-down").fadeOut();
+        }
+    });
 
     // 정의
     const $webD = $(".design-title h3");
@@ -419,6 +436,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const $verMore = $(".graphic-design span:nth-of-type(1)");
     const $viewMore = $(".graphic-design span:nth-of-type(2)");
 
+    const $popUp = $(".pop-up");
+    const $popUpBtn = $(".pop-up-con button");
+    const $blur = $(".pop-up .blur");
+
     $(".graphic-design li:nth-of-type(1)").addClass("active");
 
     $graphicLi.on("click", function () {
@@ -431,11 +452,107 @@ document.addEventListener("DOMContentLoaded", () => {
         $graphicLi.on("click", function () {
             // 선택한 li의 index 구하기
             const imgIndex = $(this).index();
-            console.log(imgIndex);
+            // console.log(imgIndex);
 
             //인덱스에 해당하는 이미지 보여주기
             $imgBox.html(`<img src="./img/sh${imgIndex + 1}.jpg" alt="" />`);
+
+            gsap.from($imgBox, { opacity: 0, duration: 0.5 });
         });
     }
     showImage();
+
+    // 팝업창 띄우기
+
+    $imgBox.on("click", function () {
+        $popUp.show();
+
+        gsap.from($(".pop-up-con"), {
+            opacity: 0,
+            duration: 0.5,
+        });
+        gsap.from($blur, {
+            opacity: 0,
+            duration: 0.6,
+        });
+    });
+
+    [$popUpBtn, $blur].forEach(($el) => {
+        $el.on("click", function () {
+            $popUp.hide();
+        });
+    });
+
+    // 사진 나오게 하기
+
+    const $webDBox = $(".design-box");
+    const $webDImg = $(".pop-up-web-con figure");
+
+    const $popUpW = $(".pop-up-web");
+    const $popUpBtnW = $(".btn-web .btn-close");
+    const $blurW = $(".pop-up-web .blur-web");
+
+    function showWebImage() {
+        $webDBox.on("click", function () {
+            // 선택한 박스의 index 구하기
+            const wImgIndex = $(this).index();
+            console.log(wImgIndex);
+
+            //인덱스에 해당하는 이미지 보여주기
+            $webDImg.html(`<img src="./img/web${wImgIndex + 1}.jpg" alt="" />`);
+
+            // gsap.from($webDImg, { opacity: 0, duration: 0.5 });
+        });
+    }
+
+    $webDBox.on("click", function () {
+        $popUpW.show();
+
+        gsap.from($(".pop-up-web-con"), {
+            opacity: 0,
+            duration: 0.5,
+        });
+        gsap.from($blurW, {
+            opacity: 0,
+            duration: 0.6,
+        });
+        showWebImage();
+    });
+
+    [$popUpBtnW, $blurW].forEach(($eW) => {
+        $eW.on("click", function () {
+            $popUpW.hide();
+        });
+    });
+
+    // graphicD webD img에서 커서 움직이기
+    let cursorx = 0,
+        cursory = 0,
+        cursormx = 0,
+        cursormy = 0;
+
+    const cursorSpeed = 0.1;
+
+    const $cursor = $(".cursor");
+    const $webDThumb = $(".design-con .thumb");
+
+    gsap.set($cursor, { autoAlpha: 0, scale: 0 });
+
+    [$imgBox, $webDThumb].forEach(($ei) => {
+        $ei.on("mousemove", function (e) {
+            // console.log(e);
+            cursorx = e.pageX;
+            cursory = e.pageY;
+
+            gsap.to($cursor, { left: cursorx, top: cursory });
+        });
+        $ei.on("mouseenter", function () {
+            gsap.to($cursor, { autoAlpha: 1, scale: 1 });
+        });
+        $ei.on("mouseleave", function () {
+            gsap.to($cursor, { autoAlpha: 0, scale: 0 });
+        });
+    });
+
+    // 애니메이션 재생방지
 });
