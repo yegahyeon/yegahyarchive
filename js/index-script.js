@@ -85,16 +85,16 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     // intro-bgb 애니메이션
     TL.to(".intro-bgb", {
-        scale: 100,
+        scale: 50,
         duration: 10,
         ease: "none",
         scrollTrigger: {
             trigger: ".main-visual",
             start: "top 0%",
-            end: "+=120%",
+            end: "+=100%",
             // markers: true,
             pin: true,
-            scrub: 3,
+            scrub: 2,
             toggleActions: "play none none reverse",
         },
     });
@@ -154,12 +154,42 @@ document.addEventListener("DOMContentLoaded", () => {
 
         scrollTrigger: {
             trigger: "body",
-            start: "top 0%",
+            start: "top -10%",
             end: "+=80%",
             // markers: true,
             scrub: 1,
             toggleActions: "play none none reverse",
         },
+    });
+    TL.from(".contact", {
+        opacity: 0,
+        duration: 0.5,
+
+        scrollTrigger: {
+            trigger: ".design-list",
+            start: "top 0%",
+            // end: "+=80%",
+            // markers: true,
+            scrub: 1,
+            toggleActions: "play none none reverse",
+        },
+    });
+
+    gsap.utils.toArray(".design-box").forEach((webBox, i) => {
+        gsap.from(webBox, {
+            opacity: 0,
+            y: -50,
+            duration: 0.5,
+
+            ease: "power2.out",
+            scrollTrigger: {
+                trigger: webBox,
+                start: "top 40%",
+                markers: true,
+                // end: "bottom 50%",
+                toggleActions: "play none none reverse",
+            },
+        });
     });
 
     // 애니메이션 재실행 안되게
@@ -381,8 +411,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // GSAP ScrollTrigger 설정
     ScrollTrigger.create({
-        trigger: "#container", // 스크롤 트리거 요소
-        start: "top center", // 스크롤 시작 지점
+        trigger: ".design-list", // 스크롤 트리거 요소
+        start: "bottom bottom", // 스크롤 시작 지점
         onEnter: () => addBalls(), // 스크롤 트리거가 시작되면 공 추가
         once: true, // 처음 한 번만 실행
     });
