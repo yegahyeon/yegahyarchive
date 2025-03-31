@@ -24,8 +24,8 @@
     padding: 5rem 0;
     position: relative;
 }
-.mode-wrap {
-    position: absolute;
+.about-wrap {
+    position: relative;
 }
 
 .main-title {
@@ -69,7 +69,7 @@
         0 0 100px rgba(255, 255, 255, 0.1);
 }
 
-.about-me figure {
+.pic-me {
     width: 20vw;
     aspect-ratio: 3 / 4;
     position: absolute;
@@ -83,7 +83,7 @@
 .about-con {
     position: absolute;
     /* top: 58rem; */
-    top: 70vh;
+    top: calc(100% - 11vw);
 
     /* about 그리드 젤 상위 */
     display: grid !important;
@@ -311,6 +311,10 @@
     height: 506px;
     /* overflow: hidden; */
 }
+
+/* .selection-slider .swiper-slide:nth-of-type(2) figure img {
+    object-fit: contain;
+} */
 
 .experience-swiper .btn {
     display: flex;

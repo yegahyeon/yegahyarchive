@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const $designList = $(".design-list");
 
     // 레니쮸
-    const lenis = new Lenis();
+    const lenis = new Lenis({ WheelEventsTarget: document.body });
 
     lenis.on("scroll", (e) => {
         // console.log(e);
@@ -194,23 +194,6 @@ document.addEventListener("DOMContentLoaded", () => {
         },
     });
 
-    // design-list 영역
-    // 만약 사용자가 main 부분으로 들어왔으면 숨김 처리
-    if (sessionStorage.getItem("enteredMain")) {
-        $(".intro-bgw, .intro-bgb, .scroll-down").hide();
-    }
-
-    // 사용자가 main 부분으로 스크롤을 내렸을 때 저장
-    $(window).on("scroll", function () {
-        let mainOffset = $("main").offset().top;
-        let scrollTop = $(window).scrollTop();
-
-        if (scrollTop >= mainOffset) {
-            sessionStorage.setItem("enteredMain", "true");
-            $(".intro-bgw, .intro-bgb, .scroll-down").fadeOut();
-        }
-    });
-
     // 정의
     const $webD = $(".design-title h3");
     const $graphicD = $(".design-title h4");
@@ -370,7 +353,7 @@ document.addEventListener("DOMContentLoaded", () => {
         for (let i = 0; i < 100; i++) {
             const x = containerWidth - 50; // 오른쪽에서 시작
             const y = -50; // 화면 위쪽 보이지 않는 곳에서 시작
-            const color = i === 0 ? "#FF3B00" : "#D3AF1C"; // 첫 번째 공은 빨간색
+            const color = i === 50 ? "#FF3B00" : "#D3AF1C"; // 첫 번째 공은 빨간색
             const ball = createBall(x, y, 20, color);
             balls.push(ball);
         }
@@ -438,34 +421,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const $popUp = $(".pop-up");
     const $popUpBtn = $(".pop-up-con button");
-    const $blur = $(".pop-up .blur");
+    const $popUpImg = $(".pop-up-con figure");
+    const $blur = $(".blur");
 
     $(".graphic-design li:nth-of-type(1)").addClass("active");
 
+    let imgIndex = 0;
     $graphicLi.on("click", function () {
         $(".graphic-design ul li").removeClass("active"); // 모든 li에서 active 제거
         $(this).addClass("active");
+        imgIndex = $(this).index();
+        console.log(imgIndex);
+        $imgBox.html(`<img src="./img/sh${imgIndex + 1}.jpg" alt="" />`);
+
+        gsap.from($imgBox, { opacity: 0, duration: 0.5 });
     });
-
-    // 사진 나오게 하기
-    function showImage() {
-        $graphicLi.on("click", function () {
-            // 선택한 li의 index 구하기
-            const imgIndex = $(this).index();
-            // console.log(imgIndex);
-
-            //인덱스에 해당하는 이미지 보여주기
-            $imgBox.html(`<img src="./img/sh${imgIndex + 1}.jpg" alt="" />`);
-
-            gsap.from($imgBox, { opacity: 0, duration: 0.5 });
-        });
-    }
-    showImage();
 
     // 팝업창 띄우기
 
     $imgBox.on("click", function () {
         $popUp.show();
+        $blur.show();
+
+        $popUpImg.html(`<img src="./img/sh${imgIndex + 1}.jpg" alt="" />`);
 
         gsap.from($(".pop-up-con"), {
             opacity: 0,
@@ -480,17 +458,18 @@ document.addEventListener("DOMContentLoaded", () => {
     [$popUpBtn, $blur].forEach(($el) => {
         $el.on("click", function () {
             $popUp.hide();
+            $blur.hide();
         });
     });
 
     // 사진 나오게 하기
 
     const $webDBox = $(".design-box");
-    const $webDImg = $(".pop-up-web-con figure");
+    const $webDImg = $(".pop-up-web figure");
 
     const $popUpW = $(".pop-up-web");
     const $popUpBtnW = $(".btn-web .btn-close");
-    const $blurW = $(".pop-up-web .blur-web");
+    const $blurW = $(".blur-web");
 
     function showWebImage() {
         $webDBox.on("click", function () {
@@ -507,8 +486,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     $webDBox.on("click", function () {
         $popUpW.show();
+        $blurW.show();
 
-        gsap.from($(".pop-up-web-con"), {
+        gsap.from($(".pop-up-web"), {
             opacity: 0,
             duration: 0.5,
         });
@@ -522,6 +502,7 @@ document.addEventListener("DOMContentLoaded", () => {
     [$popUpBtnW, $blurW].forEach(($eW) => {
         $eW.on("click", function () {
             $popUpW.hide();
+            $blurW.hide();
         });
     });
 
