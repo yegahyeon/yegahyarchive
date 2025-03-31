@@ -185,7 +185,7 @@ document.addEventListener("DOMContentLoaded", () => {
             scrollTrigger: {
                 trigger: webBox,
                 start: "top 40%",
-                markers: true,
+                // markers: true,
                 // end: "bottom 50%",
                 toggleActions: "play none none reverse",
             },
