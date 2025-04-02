@@ -1,11 +1,7 @@
 @charset 'utf-8';
 
-@import url('https://fonts.googleapis.com/css2?family=Anton+SC&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Anton+SC&display=swap");
 
-.line {
-    display: inline-block;
-    overflow: hidden;
-}
 .intro-bgw {
     position: fixed;
     top: 0;
@@ -139,7 +135,7 @@
 }
 
 .me h2 {
-    font-family: 'Libre Baskerville';
+    font-family: "Libre Baskerville";
     font-weight: 700;
     font-size: 7vw;
     line-height: 1;
@@ -208,7 +204,7 @@
 }
 .design-list .design-title {
     text-transform: uppercase;
-    font-family: 'Anton SC';
+    font-family: "Anton SC";
     font-size: 19rem;
     color: var(--white30p);
 }
@@ -247,7 +243,7 @@
 }
 
 .design-box:not(:last-child)::after {
-    content: '';
+    content: "";
     width: 1px;
     height: 335px;
     background: var(--white30p);
@@ -317,6 +313,7 @@
     margin: 10rem auto 0;
     background: #fff;
     color: #222;
+    display: none;
 }
 
 .spacer {
@@ -431,7 +428,7 @@
 }
 
 .graphic-design ul li::after {
-    content: '';
+    content: "";
     width: 0%;
     height: 1px;
     background: #fff;
@@ -528,10 +525,11 @@
 .pop-up-web .btn-top {
     position: fixed;
     bottom: 3rem;
-    right: 3rem;
+    right: 6rem;
     border: 1px solid #000;
     padding: 5px;
     border-radius: 0.5vw;
+    background: #fff;
 }
 
 .pop-up-web .link {

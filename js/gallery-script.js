@@ -10,13 +10,6 @@ $(function () {
     const easing = 0.015;
     const scale = 1.2;
 
-    const $btnHam = $(".btn-hambugi");
-    const $btnHamI = $(".btn-hambugi i");
-    const $submenu = $(".menu");
-
-    $btnHam.on("click", () => {
-        $btnHam.toggleClass("active");
-    });
     // 갤러리 요소와 설정
     const $gallery = $(".pic-list");
     const $galleryPic = $(".pic-con");
