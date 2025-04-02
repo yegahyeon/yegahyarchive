@@ -571,6 +571,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     $(".graphic-design li:nth-of-type(1)").addClass("active");
 
+    /// 그래픽임!!!!!!!!!!
     let imgIndex = 0;
     $graphicLi.on("click", function () {
         $(".graphic-design ul li").removeClass("active"); // 모든 li에서 active 제거

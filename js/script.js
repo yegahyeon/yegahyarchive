@@ -57,6 +57,17 @@ $(document).ready(function () {
         }
     });
 
+    // 스크롤이 active 클래스가 부여됐을 때 스크롤 시 클래스 지움
+    let isScrolling = false;
+    ScrollTrigger.addEventListener("scrollStart", () => {
+        isScrolling = true;
+        if (isScrolling) $(".btn-hambugi").removeClass("active");
+    });
+
+    ScrollTrigger.addEventListener("scrollEnd", () => {
+        isScrolling = false;
+    });
+
     // GSAP ScrollTrigger 플러그인 등록
     gsap.registerPlugin(ScrollTrigger, CustomEase);
 
