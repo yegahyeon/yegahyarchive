@@ -222,6 +222,8 @@
 }
 
 .experience-con h2 {
+    font-family: "BookkMyungjo-Bd";
+    line-height: 110%;
     font-weight: 800;
     font-size: 15rem;
     text-align: right;
@@ -234,7 +236,7 @@
 
 .tattooist {
     position: absolute;
-    bottom: 14.7rem;
+    bottom: 25rem;
     left: 35rem;
 
     font-size: 20px;

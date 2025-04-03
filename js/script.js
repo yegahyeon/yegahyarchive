@@ -190,20 +190,20 @@ $(document).ready(function () {
     // 나머지 요소들에 대한 스크롤 트리거 설정
     const scrollElements = [$portfolio, $experience, $designList];
 
-    scrollElements.forEach((element, index) => {
-        gsap.from(element, {
-            scrollTrigger: {
-                trigger: element,
-                start: "top 70%", // 화면 중앙보다 약간 아래에서 시작
-                toggleActions: "play none none reverse",
-                // markers: true, // 개발 시 스크롤 위치 확인용 (나중에 제거)
-            },
-            opacity: 0,
-            y: 100,
-            duration: 2,
-            // delay: index * 0.3, // 각 요소별로 약간의 딜레이
-        });
-    });
+    // scrollElements.forEach((element, index) => {
+    //     gsap.from(element, {
+    //         scrollTrigger: {
+    //             trigger: element,
+    //             start: "top 70%", // 화면 중앙보다 약간 아래에서 시작
+    //             toggleActions: "play none none reverse",
+    //             // markers: true, // 개발 시 스크롤 위치 확인용 (나중에 제거)
+    //         },
+    //         opacity: 0,
+    //         y: 100,
+    //         duration: 2,
+    //         // delay: index * 0.3, // 각 요소별로 약간의 딜레이
+    //     });
+    // });
 
     // 초기 상태 설정
     gsap.set([$aboutContent, $picMe], {

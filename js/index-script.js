@@ -28,11 +28,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     requestAnimationFrame(raf);
 
+    let ballsAdded = false; // addBalls 함수가 실행되었는지 추적하는 변수
+
     $(window).on("scroll", function () {
         const scrollTop = $(this).scrollTop();
 
         if (scrollTop > $(document).height() * 0.7) {
             $(".contact").show();
+            if (!ballsAdded) {
+                addBalls();
+                ballsAdded = true;
+            }
         } else {
             $(".contact").hide();
         }
@@ -221,7 +227,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const meTxt = document.querySelector(".me h2");
     const dTxt = document.querySelector(".me strong");
-    const text = new SplitType(meTxt, { types: "words" });
+    const text = new SplitType(meTxt, { type: "words" });
     console.log(text.words);
 
     gsap.from(text.words, {
@@ -513,25 +519,6 @@ document.addEventListener("DOMContentLoaded", () => {
     Engine.run(engine);
     Render.run(render);
 
-    // GSAP ScrollTrigger 설정
-    ScrollTrigger.create({
-        trigger: "#project-list", // 스크롤 트리거 요소
-        start: "bottom bottom", // 스크롤 시작 지점
-        onEnter: () => addBalls(), // 스크롤 트리거가 시작되면 공 추가
-        once: true, // 처음 한 번만 실행
-        // markers: true,
-    });
-
-    if ($graphicDC.hasClass("active")) {
-        ScrollTrigger.create({
-            trigger: ".graphic-design", // 스크롤 트리거 요소
-            start: "bottom bottom", // 스크롤 시작 지점
-            onEnter: () => addBalls(), // 스크롤 트리거가 시작되면 공 추가
-            once: true, // 처음 한 번만 실행
-            // markers: true,
-        });
-    }
-
     // 복사 기능 구현
     const copyElements = document.querySelectorAll(".contact dd");
 
@@ -589,7 +576,7 @@ document.addEventListener("DOMContentLoaded", () => {
         $popUp.show();
         $blur.show();
 
-        $popUpImg.html(`<img src="./img/sh${imgIndex + 1}.jpg" alt="" />`);
+        $popUpImg.html(`<img src="./img/graphic${imgIndex + 1}.png" alt="" />`);
 
         gsap.from($(".pop-up-con"), {
             opacity: 0,

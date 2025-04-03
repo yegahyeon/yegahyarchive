@@ -3,21 +3,26 @@
 @import url("https://fonts.googleapis.com/css2?family=Anton+SC&display=swap");
 
 body {
+    height: 100vh;
     margin: 0;
     overflow-x: hidden;
 }
 
+/* .gallery {
+    height: 100vh;
+} */
 .pic-list {
-    display: grid;
+    /* display: grid;
     grid-template-columns: auto;
     grid-template-rows: auto;
 
-    grid-gap: 5rem;
+    grid-gap: 5rem; */
 
     position: fixed;
     width: 100%;
-    transform-origin: center;
-    will-change: transform;
+    height: 100%;
+    /* transform-origin: center;
+    will-change: transform; */
 
     /* border: 5px solid red; */
 }
@@ -34,18 +39,50 @@ body {
 
 .pic-list .pic-con {
     /* width: 30%; */
-    position: relative;
-    transition: 0.4s;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
 }
 
+.pic-list .pic-con p {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none; /* 마우스 이벤트 방해 X */
+    background: var(--sub-color);
+    color: #000;
+    white-space: nowrap;
+
+    font-size: 1.8rem;
+
+    transform: scale(0);
+}
+
+.pic-list .pic-con img {
+    transition: 0.4s;
+}
+.pic-list .pic-con:hover img {
+    transform: scale(2);
+}
 .pic-list .pic-con:hover {
-    transform: scale(1.1);
     filter: blur(0) grayscale(0);
     z-index: 11;
 }
 
+.pic-con:nth-child(odd) {
+    width: 200px;
+    height: 250px;
+    /* border: 1px solid #f00; */
+}
+.pic-con:nth-child(even) {
+    width: 300px;
+    height: 350px;
+    /* border: 1px solid #00f; */
+}
+
 /* 1열 */
-.pic-list .pic-con:nth-of-type(1) {
+/* .pic-list .pic-con:nth-of-type(1) {
     grid-column: 2 / 6;
     grid-row: 1 / 4;
 }
@@ -61,10 +98,10 @@ body {
 .pic-list .pic-con:nth-of-type(7) {
     grid-column: 16 / 18;
     grid-row: 1 / 6;
-}
+} */
 
 /* 2열 */
-.pic-list .pic-con:nth-of-type(5) {
+/* .pic-list .pic-con:nth-of-type(5) {
     grid-column: 1 / 4;
     grid-row: 6 / 12;
 }
@@ -76,10 +113,10 @@ body {
 .pic-list .pic-con:nth-of-type(6) {
     grid-column: 16 / 20;
     grid-row: 6 / 12;
-}
+} */
 
 /* 3열 */
-.pic-list .pic-con:nth-of-type(8) {
+/* .pic-list .pic-con:nth-of-type(8) {
     grid-column: 1 / 4;
     grid-row: 14 / 18;
 }
@@ -94,7 +131,7 @@ body {
 .pic-list .pic-con:nth-of-type(11) {
     grid-column: 15 / 19;
     grid-row: 13 / 20;
-}
+} */
 
 .view-part {
     position: fixed;
@@ -112,7 +149,7 @@ body {
 }
 
 .view-part h1 {
-    font: 10vw/1 "Anton SC";
+    font: 24.5rem/1 "Anton SC";
 
     text-transform: uppercase;
     background: transparent;
@@ -121,9 +158,6 @@ body {
 .view-part p {
     display: inline-block;
     font-weight: 300;
-    font-size: 2rem;
-
-    position: absolute;
-    top: 20vh;
-    left: 42vh;
+    font-size: 2.2rem;
+    padding-left: 22vw;
 }
