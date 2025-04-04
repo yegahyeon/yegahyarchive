@@ -227,7 +227,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const meTxt = document.querySelector(".me h2");
     const dTxt = document.querySelector(".me strong");
-    const text = new SplitType(meTxt, { type: "words" });
+    const text = new SplitType(meTxt, { types: "words" });
     console.log(text.words);
 
     gsap.from(text.words, {
@@ -604,12 +604,33 @@ document.addEventListener("DOMContentLoaded", () => {
     const $popUpBtnW = $(".btn-web .btn-close");
     const $blurW = $(".blur-web");
 
+    const $btnLink1 = $(".links .link1");
+    const $btnLink2 = $(".links .link2");
+
+    $btnLink1.on("click", (e) => {
+        e.preventDefault();
+        window.open(link1);
+    });
+    $btnLink2.on("click", (e) => {
+        e.preventDefault();
+        window.open(link2);
+    });
+
+    let link1;
+    let link2;
+
     $webDBox.on("click", function () {
         // 선택한 박스의 index 구하기
         const wImgIndex = $(this).index();
         // console.log(wImgIndex);
+
+        link1 = $(this).data("link1");
+        link2 = $(this).data("link2");
+        console.log(link1, link2);
+
         //인덱스에 해당하는 이미지 보여주기
         $webDImg.html(`<img src="./img/web${wImgIndex + 1}.jpg" alt="" />`);
+        // $webDImg.html(`<img src="./img/web${wImgIndex + 1}.jpg" alt="" />`);
 
         $popUpW.show();
         $blurW.show();

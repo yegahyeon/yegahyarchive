@@ -3,8 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Ye, Gahyeon</title>
-        <link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
+        <title>ye, Gahyeon</title>
 
         <link
             href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
@@ -23,7 +22,7 @@
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.17.1/matter.js"></script>
 
-        <script src="https://cdn.jsdelivr.net/npm/split-type@0.3.4/umd/index.min.js"></script>
+        <script src="https://unpkg.com/split-type"></script>
         <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollToPlugin.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
         <script src="//cdn.jsdelivr.net/npm/jquery.marquee@1.6.0/jquery.marquee.min.js"></script>
@@ -36,7 +35,6 @@
         <script src="./js/index-script.js"></script>
 
         <!-- 아래에 스와이퍼 js파일 잇음 -->
-        <!-- <a target="_blank" href="https://icons8.com/icon/uuBdV3Ukcqzk/y">와이</a> 작가: <a target="_blank" href="https://icons8.com">Icons8</a> -->
     </head>
     <body>
         <div class="intro-bgw"></div>
@@ -372,7 +370,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="design-box">
+                    <div
+                        class="design-box"
+                        data-link1="https://www.google.com"
+                        data-link2="https://www.naver.com"
+                    >
                         <div class="design-inner">
                             <strong>06</strong>
                             <div class="design-con">
@@ -420,9 +422,9 @@
                 <button type="button" class="btn-close">
                     <i class="ri-close-line"></i>
                 </button>
-                <div class="link">
-                    <a href=""><i class="ri-github-fill"></i></a>
-                    <a href=""><i class="ri-link"></i></a>
+                <div class="links">
+                    <a href="" class="link1"><i class="ri-github-fill"></i></a>
+                    <a href="" class="link2"><i class="ri-link"></i></a>
                 </div>
             </div>
             <div class="pop-up-web-img" data-lenis-prevent>

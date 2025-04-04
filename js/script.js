@@ -41,21 +41,21 @@ $(document).ready(function () {
     const imgTotal = imgLoad.images.length;
     let imgLoaded = 0;
 
-    // 부드러운 갱신을 위한 변수 (전역설정의 필요)
-    let current = 0;
+    // // 부드러운 갱신을 위한 변수 (전역설정의 필요)
+    // let current = 0;
 
-    imgLoad.on("progress", (instance, image) => {
-        imgLoaded++;
-        const progress = Math.floor((imgLoaded / imgTotal) * 100);
+    // imgLoad.on("progress", (instance, image) => {
+    //     imgLoaded++;
+    //     const progress = Math.floor((imgLoaded / imgTotal) * 100);
 
-        current += (progress - current) * 0.001;
+    //     current += (progress - current) * 0.001;
 
-        $progressText.text(progress + "%");
+    //     $progressText.text(progress + "%");
 
-        if (progress === 100) {
-            $progress.fadeOut(1000);
-        }
-    });
+    //     if (progress === 100) {
+    //         $progress.fadeOut(1000);
+    //     }
+    // });
 
     // 스크롤이 active 클래스가 부여됐을 때 스크롤 시 클래스 지움
     let isScrolling = false;
@@ -190,20 +190,20 @@ $(document).ready(function () {
     // 나머지 요소들에 대한 스크롤 트리거 설정
     const scrollElements = [$portfolio, $experience, $designList];
 
-    // scrollElements.forEach((element, index) => {
-    //     gsap.from(element, {
-    //         scrollTrigger: {
-    //             trigger: element,
-    //             start: "top 70%", // 화면 중앙보다 약간 아래에서 시작
-    //             toggleActions: "play none none reverse",
-    //             // markers: true, // 개발 시 스크롤 위치 확인용 (나중에 제거)
-    //         },
-    //         opacity: 0,
-    //         y: 100,
-    //         duration: 2,
-    //         // delay: index * 0.3, // 각 요소별로 약간의 딜레이
-    //     });
-    // });
+    scrollElements.forEach((element, index) => {
+        gsap.from(element, {
+            scrollTrigger: {
+                trigger: element,
+                start: "top 70%", // 화면 중앙보다 약간 아래에서 시작
+                toggleActions: "play none none reverse",
+                // markers: true, // 개발 시 스크롤 위치 확인용 (나중에 제거)
+            },
+            opacity: 0,
+            y: 100,
+            duration: 2,
+            // delay: index * 0.3, // 각 요소별로 약간의 딜레이
+        });
+    });
 
     // 초기 상태 설정
     gsap.set([$aboutContent, $picMe], {
