@@ -294,6 +294,7 @@
 }
 .design-text ul {
     display: flex;
+    justify-content: flex-end;
 }
 .design-text li {
     font-size: 2rem;
