@@ -516,7 +516,8 @@ document.addEventListener("DOMContentLoaded", () => {
     World.add(engine.world, mouseConstraint);
 
     // 엔진과 렌더러 실행
-    Engine.run(engine);
+    const runner = Runner.create();
+    Runner.run(runner, engine);
     Render.run(render);
 
     // 복사 기능 구현
@@ -643,6 +644,16 @@ document.addEventListener("DOMContentLoaded", () => {
             opacity: 0,
             duration: 0.6,
         });
+
+        if (wImgIndex === 0) {
+            $btnLink1.css("display", "none");
+        } else {
+            $btnLink1.css("display", "");
+        }
+        // if (wImgIndex === 2) {
+        //     $btnLink1.html(`<i class="ri-figma-line">`);
+        // }
+        // }
     });
 
     [$popUpBtnW, $blurW].forEach(($eW) => {
