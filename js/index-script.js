@@ -645,14 +645,17 @@ document.addEventListener("DOMContentLoaded", () => {
             duration: 0.6,
         });
 
-        if (wImgIndex === 0) {
-            $btnLink1.css("display", "none");
-        } else {
+        $btnLink1.css("display", "none");
+
+        if (wImgIndex === 4 || wImgIndex === 5) {
             $btnLink1.css("display", "");
+        } else {
+            $btnLink1.css("display", "none");
         }
-        // if (wImgIndex === 2) {
-        //     $btnLink1.html(`<i class="ri-figma-line">`);
-        // }
+        // if (wImgIndex === 5) {
+        //     $btnLink1.css("display", "none");
+        // } else {
+        //     $btnLink1.css("display", "");
         // }
     });
 
