@@ -188,6 +188,7 @@
 
 .main .gnb li {
     font-size: 2vw;
+    cursor: pointer;
 }
 
 /* 디자인 리스트 */
@@ -230,9 +231,10 @@
     display: flex;
     flex-direction: column-reverse;
     gap: 3.9rem; /* 박스들 사이 간격 추가 */
+    cursor: pointer;
 }
 
-.design-inner:hover {
+.design-con:hover {
     color: var(--main-color);
 }
 
@@ -333,6 +335,7 @@
     bottom: 0;
     left: 50%;
     transform: translate(-50%, 0);
+    user-select: none;
 
     /* left: -30%; */
 }
@@ -602,11 +605,6 @@
     /* height: 100%; */
 }
 
-/* .pop-up-web-con figure img {
-    width: 100%;
-    height: auto;
-} */
-/*  */
 .cursor {
     width: 7rem;
     height: 7rem;
@@ -625,6 +623,4 @@
 
     user-select: none;
     pointer-events: none;
-
-    /* display: none; */
 }

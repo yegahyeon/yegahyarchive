@@ -147,4 +147,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 애니메이션 시작
     smoothMove();
+    let cursormx = 0,
+        cursormy = 0;
+
+    const cursorSpeed = 0.1;
+
+    const $cursor = $(".cursor");
+    const $pic = $(".pic-con");
+
+    gsap.set($cursor, { autoAlpha: 0, scale: 0 });
+
+    $pic.on("mousemove", function (e) {
+        // console.log(e);
+        cursorx = e.pageX;
+        cursory = e.pageY;
+
+        gsap.to($cursor, { left: cursorx, top: cursory });
+    });
+    $pic.on("mouseenter", function () {
+        gsap.to($cursor, { autoAlpha: 1, scale: 1 });
+        let text = $(this).find("p").text();
+        $cursor.text(text);
+    });
+    $pic.on("mouseleave", function () {
+        gsap.to($cursor, { autoAlpha: 0, scale: 0 });
+    });
 });

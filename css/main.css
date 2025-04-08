@@ -236,7 +236,7 @@
 
 .tattooist {
     position: absolute;
-    bottom: 20gitrem;
+    bottom: 20rem;
     left: 35rem;
 
     font-size: 20px;
@@ -275,6 +275,7 @@
 .bottom-slider .swiper-slide {
     /* border: 1px solid red; */
     position: relative;
+    cursor: pointer;
 }
 .bottom-slider .swiper-slide::after {
     position: absolute;
