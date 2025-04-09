@@ -133,6 +133,7 @@ document.addEventListener("DOMContentLoaded", () => {
         scale: 0,
         opacity: 0,
         duration: 2.5,
+        filter: "blur(100px)",
         ease: "expo.inOut",
         y: -250,
         scrollTrigger: {
